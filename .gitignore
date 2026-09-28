@@ -1,0 +1,10 @@
+# IDEs
+.idea/
+.vscode/
+
+# Binários e artefatos de build
+/bin/
+*.exe
+*.test
+*.out
+coverage.*
