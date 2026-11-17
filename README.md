@@ -30,16 +30,19 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 .
 ├── cmd/                  # um executável por atividade (package main)
 │   ├── lista01/          # matriz, lista, BFS e DFS
-│   └── lista02/          # árvores, árvores geradoras e arborescência
+│   ├── lista02/          # árvores, árvores geradoras e arborescência
+│   └── lista03/          # BFS/DFS em digrafo, ponderado e Dijkstra
 ├── internal/             # código compartilhado entre as atividades
-│   ├── graph/            # interface Graph, matriz, lista de adjacência e digrafo
+│   ├── graph/            # interface Graph, matriz, lista, digrafo e lista ponderada
 │   ├── traversal/        # BFS, DFS recursiva e DFS com pilha
 │   ├── tree/             # EhArvore, árvores geradoras BFS/DFS e arborescência
+│   ├── shortest/         # caminho mínimo (Dijkstra)
 │   ├── ds/               # estruturas auxiliares genéricas (fila, pilha)
 │   └── cli/              # leitura de entrada dos menus
 └── docs/                 # enunciados e respostas teóricas de cada atividade
     ├── lista01/
-    └── lista02/
+    ├── lista02/
+    └── lista03/
 ```
 
 ## 📋 Atividades
@@ -48,6 +51,7 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 |-------|----------|-----------|
 | `lista01` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/lista01/respostas.md](docs/lista01/respostas.md) |
 | `lista02` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/lista02/respostas.md](docs/lista02/respostas.md) |
+| `lista03` | BFS e DFS em grafos direcionados, ponderados e direcionados ponderados; Dijkstra | [docs/lista03/respostas.md](docs/lista03/respostas.md) |
 
 ## 🚀 Como executar
 
@@ -60,6 +64,8 @@ go run ./cmd/lista01 -extra             # com a aresta (2,5) (Questão 10)
 go run ./cmd/lista01 -input             # grafo digitado pelo usuário (Questão 13)
 go run ./cmd/lista02
 make run LISTA=lista02 ARGS="-start 3"
+go run ./cmd/lista03                    # origem A
+go run ./cmd/lista03 -start D           # outra origem (mostra inalcançáveis)
 
 # compilar todas as listas em bin/
 make build
@@ -89,6 +95,7 @@ make run ARGS="-extra"                  # lista01 com a aresta (2,5) (Questão 1
 make run ARGS="-input"                  # lista01 com grafo digitado (Questão 13)
 make run LISTA=lista02                  # lista02
 make run LISTA=lista02 ARGS="-start 3"  # lista02 com outra raiz
+make run LISTA=lista03                  # lista03
 ```
 
 ## 🛠️ Tecnologias
