@@ -2,7 +2,9 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 
+	"github.com/ctrindadedev/graph-algorithms-practice/internal/cli"
 	"github.com/ctrindadedev/graph-algorithms-practice/internal/graph"
 )
 
@@ -23,9 +25,48 @@ func defaultConfig(extra bool) config {
 }
 
 // readConfig lê do usuário o número de vértices, o número de arestas,
-// cada aresta e o vértice inicial
+// cada aresta e o vértice inicial (Questão 13).
 func readConfig(in *bufio.Reader) (config, error) {
-	// TODO: ler n, m, as m arestas (u v) e o vértice inicial,
-	// validando os valores (dica: fmt.Fscan(in, &x)).
-	return config{}, nil
+	n, err := cli.ReadInt(in, "Número de vértices: ")
+	if err != nil {
+		return config{}, err
+	}
+	if n <= 0 {
+		return config{}, fmt.Errorf("o número de vértices deve ser positivo (recebi %d)", n)
+	}
+
+	m, err := cli.ReadInt(in, "Número de arestas: ")
+	if err != nil {
+		return config{}, err
+	}
+	if m < 0 {
+		return config{}, fmt.Errorf("o número de arestas não pode ser negativo (recebi %d)", m)
+	}
+
+	edges := make([]graph.Edge, 0, m)
+	for k := range m {
+		u, err := cli.ReadInt(in, fmt.Sprintf("Aresta %d (u v): ", k+1))
+		if err != nil {
+			return config{}, err
+		}
+		v, err := cli.ReadInt(in, "")
+		if err != nil {
+			return config{}, err
+		}
+		if u < 0 || u >= n || v < 0 || v >= n || u == v {
+			return config{}, fmt.Errorf("aresta (%d, %d) inválida: use vértices distintos entre 0 e %d", u, v, n-1)
+		}
+		edges = append(edges, graph.Edge{U: u, V: v})
+	}
+
+	start, err := cli.ReadInt(in, "Vértice inicial: ")
+	if err != nil {
+		return config{}, err
+	}
+	if start < 0 || start >= n {
+		return config{}, fmt.Errorf("vértice inicial %d fora do intervalo [0, %d]", start, n-1)
+	}
+	fmt.Println()
+
+	return config{n: n, edges: edges, start: start}, nil
 }
