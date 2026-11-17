@@ -29,14 +29,25 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 ```
 .
 ├── cmd/                  # um executável por atividade (package main)
-│   └── lista01/
+│   ├── lista01/          # matriz, lista, BFS e DFS
+│   └── lista02/          # árvores, árvores geradoras e arborescência
 ├── internal/             # código compartilhado entre as atividades
-│   ├── graph/            # interface Graph + matriz e lista de adjacência
+│   ├── graph/            # interface Graph, matriz, lista de adjacência e digrafo
 │   ├── traversal/        # BFS, DFS recursiva e DFS com pilha
-│   └── ds/               # estruturas auxiliares genéricas (fila, pilha)
+│   ├── tree/             # EhArvore, árvores geradoras BFS/DFS e arborescência
+│   ├── ds/               # estruturas auxiliares genéricas (fila, pilha)
+│   └── cli/              # leitura de entrada dos menus
 └── docs/                 # enunciados e respostas teóricas de cada atividade
-    └── lista01/
+    ├── lista01/
+    └── lista02/
 ```
+
+## 📋 Atividades
+
+| Lista | Conteúdo | Respostas |
+|-------|----------|-----------|
+| `lista01` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/lista01/respostas.md](docs/lista01/respostas.md) |
+| `lista02` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/lista02/respostas.md](docs/lista02/respostas.md) |
 
 ## 🚀 Como executar
 
@@ -44,12 +55,40 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 
 ```bash
 # rodar uma atividade
-go run ./cmd/lista01
-make run LISTA=lista01 ARGS="-extra"
+go run ./cmd/lista01                    # grafo do enunciado
+go run ./cmd/lista01 -extra             # com a aresta (2,5) (Questão 10)
+go run ./cmd/lista01 -input             # grafo digitado pelo usuário (Questão 13)
+go run ./cmd/lista02
+make run LISTA=lista02 ARGS="-start 3"
+
+# compilar todas as listas em bin/
+make build
 
 # rodar todos os testes
 go test ./...
 make check
+```
+
+### Makefile
+
+| Alvo | O que faz |
+|------|-----------|
+| `make` / `make help` | Lista os alvos e as listas disponíveis |
+| `make run` | Executa uma lista (`LISTA=lista01` por padrão; `ARGS` repassa as flags) |
+| `make build` | Compila todas as listas em `bin/` |
+| `make test` | Roda todos os testes |
+| `make cover` | Roda os testes com relatório de cobertura |
+| `make fmt` | Formata o código com `gofmt` |
+| `make vet` | Análise estática com `go vet` |
+| `make check` | `vet` + `test` |
+| `make clean` | Remove `bin/` e `coverage.out` |
+
+```bash
+make run                                # lista01, grafo do enunciado
+make run ARGS="-extra"                  # lista01 com a aresta (2,5) (Questão 10)
+make run ARGS="-input"                  # lista01 com grafo digitado (Questão 13)
+make run LISTA=lista02                  # lista02
+make run LISTA=lista02 ARGS="-start 3"  # lista02 com outra raiz
 ```
 
 ## 🛠️ Tecnologias
