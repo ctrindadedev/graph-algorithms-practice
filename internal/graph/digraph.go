@@ -54,6 +54,11 @@ func (d *Digraph) Successors(u int) []int {
 	return slices.Clone(d.out[u])
 }
 
+// Neighbors é sinônimo de Successors, para o digrafo servir de Neighborhood.
+func (d *Digraph) Neighbors(u int) []int {
+	return d.Successors(u)
+}
+
 func (d *Digraph) String() string {
 	var b strings.Builder
 	for i, succ := range d.out {

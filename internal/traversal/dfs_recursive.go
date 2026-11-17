@@ -4,7 +4,7 @@ import "github.com/ctrindadedev/graph-algorithms-practice/internal/graph"
 
 // DFSRecursive executa a busca em profundidade recursiva (Questão 4). onStep recebe
 // um Step Enter ao entrar em cada vértice e um Step Leave ao retornar dele.
-func DFSRecursive(g graph.Graph, start int, onStep StepFunc) []int {
+func DFSRecursive(g graph.Neighborhood, start int, onStep StepFunc) []int {
 	// Inicialmente nenhum vértice foi visitado.
 	visited := make([]bool, g.Order())
 	var order []int

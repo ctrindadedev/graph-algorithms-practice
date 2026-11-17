@@ -9,7 +9,7 @@ import (
 
 // DFSStack executa a busca em profundidade com pilha explícita (Questões 5 e 8).
 // A cada vértice retirado do topo, onStep recebe um Step Pop.
-func DFSStack(g graph.Graph, start int, onStep StepFunc) []int {
+func DFSStack(g graph.Neighborhood, start int, onStep StepFunc) []int {
 	// PASSO 1 – preparação: nenhum vértice visitado.
 	visited := make([]bool, g.Order())
 	var order []int

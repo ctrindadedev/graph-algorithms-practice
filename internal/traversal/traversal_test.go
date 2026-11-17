@@ -15,7 +15,7 @@ var extendedEdges = append(append([]graph.Edge{}, sampleEdges...), graph.Edge{U:
 func newList(n int) graph.Graph { return graph.NewAdjacencyList(n) }
 
 func TestTraversals(t *testing.T) {
-	algorithms := map[string]func(graph.Graph, int, StepFunc) []int{
+	algorithms := map[string]func(graph.Neighborhood, int, StepFunc) []int{
 		"BFS":          BFS,
 		"DFSRecursive": DFSRecursive,
 		"DFSStack":     DFSStack,

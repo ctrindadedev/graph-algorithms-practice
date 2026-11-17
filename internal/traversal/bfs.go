@@ -7,7 +7,7 @@ import (
 
 // BFS executa a busca em largura a partir de start (Questões 3 e 7). A cada vértice
 // retirado da fila, onStep (se não for nil) recebe um Step Dequeue.
-func BFS(g graph.Graph, start int, onStep StepFunc) []int {
+func BFS(g graph.Neighborhood, start int, onStep StepFunc) []int {
 	// Inicialmente nenhum vértice foi visitado.
 	visited := make([]bool, g.Order())
 	var marked, order []int

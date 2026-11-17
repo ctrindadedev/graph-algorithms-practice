@@ -14,19 +14,25 @@ var (
 	ErrSelfLoop = errors.New("graph: laço não permitido em grafo simples")
 )
 
-// Graph é o contrato comum a todas as representações de grafo simples e não direcionado.
-type Graph interface {
+// Neighborhood é o mínimo que BFS e DFS precisam: quantidade de vértices e, para cada
+// um, os vizinhos que podem ser seguidos (em digrafos, só os arcos de saída).
+type Neighborhood interface {
 	// Order retorna a quantidade de vértices (n).
 	Order() int
+
+	// Neighbors retorna os vizinhos de v SEMPRE em ordem crescente.
+	Neighbors(v int) []int
+}
+
+// Graph é o contrato comum a todas as representações de grafo simples e não direcionado.
+type Graph interface {
+	Neighborhood
 
 	// AddEdge insere a aresta {u, v}. Como o grafo é não direcionado,
 	// a ligação deve ser registrada nos dois sentidos.
 	AddEdge(u, v int) error
 
 	HasEdge(u, v int) bool
-
-	// Neighbors retorna os vizinhos de v SEMPRE em ordem crescente.
-	Neighbors(v int) []int
 
 	String() string
 }
