@@ -1,6 +1,6 @@
 # Lista 01 – Respostas teóricas
 
-> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/lista01`](../../cmd/lista01)
+> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/unidade1/lista01`](../../../cmd/unidade1/lista01)
 
 ## Questão 6 – DFS recursiva × DFS com pilha
 
@@ -12,7 +12,7 @@
 
 ## Questão 10 – Novo grafo (aresta 2–5)
 
-Execução: `go run ./cmd/lista01` (original) e `go run ./cmd/lista01 -extra` (com a aresta (2,5)).
+Execução: `go run ./cmd/unidade1/lista01` (original) e `go run ./cmd/unidade1/lista01 -extra` (com a aresta (2,5)).
 
 **Matriz de adjacência.** Passam a valer 1 as posições `[2][5]` e `[5][2]`. A matriz continua simétrica.
 

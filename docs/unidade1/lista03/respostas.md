@@ -1,6 +1,6 @@
 # Lista 03 – BFS e DFS em grafos direcionados e ponderados
 
-> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/lista03`](../../cmd/lista03), [`internal/graph`](../../internal/graph) (`digraph.go`, `weighted.go`), [`internal/traversal`](../../internal/traversal) e [`internal/shortest`](../../internal/shortest)
+> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/unidade1/lista03`](../../../cmd/unidade1/lista03), [`internal/graph`](../../../internal/graph) (`digraph.go`, `weighted.go`), [`internal/traversal`](../../../internal/traversal) e [`internal/shortest`](../../../internal/shortest)
 >
 > Linguagem: **Go**. Os vértices A..E viram os índices 0..4, então a ordem crescente dos índices é a ordem alfabética pedida no enunciado. Origem: A.
 
@@ -97,7 +97,7 @@ Ordem: **A, B, C, D, E**.
 
 ## Comparação dos percursos
 
-Saída de `go run ./cmd/lista03`, opção 4:
+Saída de `go run ./cmd/unidade1/lista03`, opção 4:
 
 | Tipo de grafo | Ordem BFS a partir de A | Ordem DFS a partir de A |
 |---------------|-------------------------|-------------------------|
@@ -111,8 +111,8 @@ Saída de `go run ./cmd/lista03`, opção 4:
 2. **O que muda quando uma aresta passa de não direcionada para direcionada?** A aresta deixa de existir em um dos sentidos, então alguns vértices podem ficar inalcançáveis e a ordem de visita muda. Comparando as etapas 2 e 3: com `B—C`, a DFS vai A → B → C; com `C → B`, B não alcança C e a DFS vai A → B → D → E, deixando C para o fim. Em casos extremos a busca encolhe: a partir de D no digrafo só se alcança E.
 3. **Por que o peso não ordena a fila da BFS nem as chamadas da DFS?** Porque BFS e DFS respondem perguntas de conectividade (o que é alcançável e em que ordem de exploração), e a “distância” da BFS é contada em número de arestas. Ordenar a fronteira pelo custo acumulado já seria outro algoritmo, com fila de prioridade: Dijkstra. Além disso, o enunciado fixa a ordem alfabética para que os percursos sejam reproduzíveis.
 4. **No grafo ponderado, o caminho com menos arestas é sempre o de menor custo?** Não. De A até B, a aresta direta custa 4, mas A – C – B custa 2 + 1 = 3. De A até E, o caminho com menos arestas é A – C – E (2 arestas, custo 12), mas A – C – B – D – E custa 2 + 1 + 5 + 2 = 10 com 4 arestas.
-5. **Como ler do teclado os vértices, as arestas e os pesos?** Ler a quantidade de vértices (ou seus nomes, mapeando cada letra para um índice), se o grafo é direcionado e se é ponderado, a quantidade de arestas e, em seguida, uma linha `u v` ou `u v peso` por aresta. Cada linha é validada (vértices existentes, sem laço, peso inteiro) e repassada para `AddArc`/`AddEdge`. A Lista 01 já faz isso para grafos simples em `readConfig` (`go run ./cmd/lista01 -input`); bastaria acrescentar as duas perguntas de tipo e o peso.
-6. **Como tratar vértices não alcançáveis a partir da origem?** Eles simplesmente nunca entram na fila/pilha, então ficam com `visitado = FALSO` ao final. O programa compara os visitados com V e lista os que faltaram (`go run ./cmd/lista03 -start D` mostra A, B e C como inalcançáveis). Se for preciso percorrer o grafo todo, basta reiniciar a busca a partir de cada vértice ainda não visitado, em ordem alfabética, formando uma floresta de busca. No Dijkstra, esses vértices ficam com distância ∞ e sem predecessor.
+5. **Como ler do teclado os vértices, as arestas e os pesos?** Ler a quantidade de vértices (ou seus nomes, mapeando cada letra para um índice), se o grafo é direcionado e se é ponderado, a quantidade de arestas e, em seguida, uma linha `u v` ou `u v peso` por aresta. Cada linha é validada (vértices existentes, sem laço, peso inteiro) e repassada para `AddArc`/`AddEdge`. A Lista 01 já faz isso para grafos simples em `readConfig` (`go run ./cmd/unidade1/lista01 -input`); bastaria acrescentar as duas perguntas de tipo e o peso.
+6. **Como tratar vértices não alcançáveis a partir da origem?** Eles simplesmente nunca entram na fila/pilha, então ficam com `visitado = FALSO` ao final. O programa compara os visitados com V e lista os que faltaram (`go run ./cmd/unidade1/lista03 -start D` mostra A, B e C como inalcançáveis). Se for preciso percorrer o grafo todo, basta reiniciar a busca a partir de cada vértice ainda não visitado, em ordem alfabética, formando uma floresta de busca. No Dijkstra, esses vértices ficam com distância ∞ e sem predecessor.
 
 ## Desafio – Dijkstra no grafo direcionado e ponderado
 

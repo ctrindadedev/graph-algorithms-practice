@@ -5,6 +5,10 @@ LISTA ?= lista01
 ARGS  ?=
 BIN   := bin
 
+# Cada atividade fica em cmd/<unidade>/<lista>; LISTA é só o nome da pasta.
+LISTAS := $(notdir $(patsubst %/,%,$(dir $(wildcard cmd/*/*/main.go))))
+CMD    := $(firstword $(wildcard cmd/*/$(LISTA)))
+
 .DEFAULT_GOAL := help
 
 help:
@@ -17,10 +21,11 @@ help:
 	@echo "  vet    analisa o código com go vet"
 	@echo "  check  vet + test"
 	@echo "  clean  remove binários e relatórios de cobertura"
-	@echo "Listas: $(notdir $(wildcard cmd/*))"
+	@echo "Listas: $(LISTAS)"
 
 run:
-	go run ./cmd/$(LISTA) $(ARGS)
+	@test -n "$(CMD)" || { echo "lista '$(LISTA)' não encontrada em cmd/*/"; exit 1; }
+	go run ./$(CMD) $(ARGS)
 
 build:
 	go build -o $(BIN)/ ./cmd/...
