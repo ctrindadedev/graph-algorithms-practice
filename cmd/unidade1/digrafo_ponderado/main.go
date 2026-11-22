@@ -1,4 +1,4 @@
-// Comando lista03: menu com BFS e DFS em grafos direcionados, ponderados e
+// Comando digrafo_ponderado: menu com BFS e DFS em grafos direcionados, ponderados e
 // direcionados ponderados, mais o desafio de Dijkstra. Flag: -start (A..E).
 package main
 

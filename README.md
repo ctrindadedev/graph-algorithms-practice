@@ -30,9 +30,9 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 .
 ├── cmd/                      # um executável por atividade (package main)
 │   ├── unidade1/
-│   │   ├── lista01/          # matriz, lista, BFS e DFS
-│   │   ├── lista02/          # árvores, árvores geradoras e arborescência
-│   │   └── lista03/          # BFS/DFS em digrafo, ponderado e Dijkstra
+│   │   ├── matriz_lista_bfs_dfs/  # matriz, lista, BFS e DFS
+│   │   ├── arvores_geradoras/     # árvores, árvores geradoras e arborescência
+│   │   └── digrafo_ponderado/     # BFS/DFS em digrafo, ponderado e Dijkstra
 │   └── unidade2/             # estudos dirigidos de caminhos mínimos (a fazer)
 │       ├── dijkstra/
 │       ├── bellman_ford/
@@ -46,9 +46,9 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 │   └── cli/                  # leitura de entrada dos menus
 └── docs/                     # enunciados e respostas, na mesma divisão de cmd/
     ├── unidade1/
-    │   ├── lista01/
-    │   ├── lista02/
-    │   └── lista03/
+    │   ├── matriz_lista_bfs_dfs/
+    │   ├── arvores_geradoras/
+    │   └── digrafo_ponderado/
     └── unidade2/
         ├── dijkstra/
         ├── bellman_ford/
@@ -59,11 +59,11 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 
 ### Unidade I
 
-| Lista | Conteúdo | Respostas |
-|-------|----------|-----------|
-| `lista01` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/unidade1/lista01/respostas.md](docs/unidade1/lista01/respostas.md) |
-| `lista02` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/unidade1/lista02/respostas.md](docs/unidade1/lista02/respostas.md) |
-| `lista03` | BFS e DFS em grafos direcionados, ponderados e direcionados ponderados; Dijkstra | [docs/unidade1/lista03/respostas.md](docs/unidade1/lista03/respostas.md) |
+| Atividade | Conteúdo | Respostas |
+|-----------|----------|-----------|
+| `matriz_lista_bfs_dfs` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/unidade1/matriz_lista_bfs_dfs/respostas.md](docs/unidade1/matriz_lista_bfs_dfs/respostas.md) |
+| `arvores_geradoras` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/unidade1/arvores_geradoras/respostas.md](docs/unidade1/arvores_geradoras/respostas.md) |
+| `digrafo_ponderado` | BFS e DFS em grafos direcionados, ponderados e direcionados ponderados; Dijkstra | [docs/unidade1/digrafo_ponderado/respostas.md](docs/unidade1/digrafo_ponderado/respostas.md) |
 
 ### Unidade II – Caminhos mínimos
 
@@ -81,13 +81,13 @@ Avaliação da unidade: três estudos dirigidos, entrega pelo SIGAA até **01/12
 
 ```bash
 # rodar uma atividade
-go run ./cmd/unidade1/lista01           # grafo do enunciado
-go run ./cmd/unidade1/lista01 -extra    # com a aresta (2,5) (Questão 10)
-go run ./cmd/unidade1/lista01 -input    # grafo digitado pelo usuário (Questão 13)
-go run ./cmd/unidade1/lista02
-make run LISTA=lista02 ARGS="-start 3"
-go run ./cmd/unidade1/lista03           # origem A
-go run ./cmd/unidade1/lista03 -start D  # outra origem (mostra inalcançáveis)
+go run ./cmd/unidade1/matriz_lista_bfs_dfs           # grafo do enunciado
+go run ./cmd/unidade1/matriz_lista_bfs_dfs -extra    # com a aresta (2,5) (Questão 10)
+go run ./cmd/unidade1/matriz_lista_bfs_dfs -input    # grafo digitado pelo usuário (Questão 13)
+go run ./cmd/unidade1/arvores_geradoras
+make run LISTA=arvores_geradoras ARGS="-start 3"
+go run ./cmd/unidade1/digrafo_ponderado           # origem A
+go run ./cmd/unidade1/digrafo_ponderado -start D  # outra origem (mostra inalcançáveis)
 
 # compilar todas as listas em bin/
 make build
@@ -102,7 +102,7 @@ make check
 | Alvo | O que faz |
 |------|-----------|
 | `make` / `make help` | Lista os alvos e as listas disponíveis |
-| `make run` | Executa uma lista (`LISTA=lista01` por padrão; `ARGS` repassa as flags) |
+| `make run` | Executa uma lista (`LISTA=matriz_lista_bfs_dfs` por padrão; `ARGS` repassa as flags) |
 | `make build` | Compila todas as listas em `bin/` |
 | `make test` | Roda todos os testes |
 | `make cover` | Roda os testes com relatório de cobertura |
@@ -112,12 +112,12 @@ make check
 | `make clean` | Remove `bin/` e `coverage.out` |
 
 ```bash
-make run                                # lista01, grafo do enunciado
-make run ARGS="-extra"                  # lista01 com a aresta (2,5) (Questão 10)
-make run ARGS="-input"                  # lista01 com grafo digitado (Questão 13)
-make run LISTA=lista02                  # lista02
-make run LISTA=lista02 ARGS="-start 3"  # lista02 com outra raiz
-make run LISTA=lista03                  # lista03
+make run                                            # matriz_lista_bfs_dfs, grafo do enunciado
+make run ARGS="-extra"                              # com a aresta (2,5) (Questão 10)
+make run ARGS="-input"                              # com grafo digitado (Questão 13)
+make run LISTA=arvores_geradoras                    # árvores geradoras
+make run LISTA=arvores_geradoras ARGS="-start 3"    # com outra raiz
+make run LISTA=digrafo_ponderado                    # digrafo ponderado
 ```
 
 ## 🛠️ Tecnologias

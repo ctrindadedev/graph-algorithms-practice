@@ -1,4 +1,4 @@
-// Comando lista02: menu com os algoritmos da Aula 9 (árvores e árvores geradoras).
+// Comando arvores_geradoras: menu com os algoritmos da Aula 9 (árvores e árvores geradoras).
 // Flag: -start define a raiz das árvores geradoras.
 package main
 

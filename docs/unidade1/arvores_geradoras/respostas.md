@@ -1,6 +1,6 @@
 # Lista 02 – Árvores e Árvores Geradoras (Aula 9)
 
-> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/unidade1/lista02`](../../../cmd/unidade1/lista02) e [`internal/tree`](../../../internal/tree)
+> Enunciado: [`enunciado.docx`](./enunciado.docx) · Código: [`cmd/unidade1/arvores_geradoras`](../../../cmd/unidade1/arvores_geradoras) e [`internal/tree`](../../../internal/tree)
 
 ## Pseudocódigos comentados
 
@@ -96,7 +96,7 @@ Algoritmo ArborescenciaBFS(G, r)
 
 ## Atividade 1 – `EhArvore`
 
-Saída de `go run ./cmd/unidade1/lista02`, opção 1:
+Saída de `go run ./cmd/unidade1/arvores_geradoras`, opção 1:
 
 | Grafo                                         | \|V\| | \|E\| | É árvore? |
 |-----------------------------------------------|-----|-----|-----------|

@@ -1,4 +1,4 @@
-// Comando lista01: menu com os algoritmos da Lista 01 (Questão 9).
+// Comando matriz_lista_bfs_dfs: menu com os algoritmos da Lista 01 (Questão 9).
 // Flags: -extra adiciona a aresta (2,5) (Questão 10); -input lê o grafo do usuário (Questão 13).
 package main
 

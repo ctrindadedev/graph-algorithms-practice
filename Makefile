@@ -1,7 +1,7 @@
 .PHONY: help run build test cover fmt vet check clean
 
-# Uso: make run LISTA=lista02 ARGS="-start 3"
-LISTA ?= lista01
+# Uso: make run LISTA=arvores_geradoras ARGS="-start 3"
+LISTA ?= matriz_lista_bfs_dfs
 ARGS  ?=
 BIN   := bin
 
