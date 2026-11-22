@@ -28,30 +28,52 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 
 ```
 .
-├── cmd/                  # um executável por atividade (package main)
-│   ├── lista01/          # matriz, lista, BFS e DFS
-│   ├── lista02/          # árvores, árvores geradoras e arborescência
-│   └── lista03/          # BFS/DFS em digrafo, ponderado e Dijkstra
-├── internal/             # código compartilhado entre as atividades
-│   ├── graph/            # interface Graph, matriz, lista, digrafo e lista ponderada
-│   ├── traversal/        # BFS, DFS recursiva e DFS com pilha
-│   ├── tree/             # EhArvore, árvores geradoras BFS/DFS e arborescência
-│   ├── shortest/         # caminho mínimo (Dijkstra)
-│   ├── ds/               # estruturas auxiliares genéricas (fila, pilha)
-│   └── cli/              # leitura de entrada dos menus
-└── docs/                 # enunciados e respostas teóricas de cada atividade
-    ├── lista01/
-    ├── lista02/
-    └── lista03/
+├── cmd/                      # um executável por atividade (package main)
+│   ├── unidade1/
+│   │   ├── lista01/          # matriz, lista, BFS e DFS
+│   │   ├── lista02/          # árvores, árvores geradoras e arborescência
+│   │   └── lista03/          # BFS/DFS em digrafo, ponderado e Dijkstra
+│   └── unidade2/             # estudos dirigidos de caminhos mínimos (a fazer)
+│       ├── dijkstra/
+│       ├── bellman_ford/
+│       └── floyd_warshall/
+├── internal/                 # código compartilhado entre as atividades
+│   ├── graph/                # interface Graph, matriz, lista, digrafo e lista ponderada
+│   ├── traversal/            # BFS, DFS recursiva e DFS com pilha
+│   ├── tree/                 # EhArvore, árvores geradoras BFS/DFS e arborescência
+│   ├── shortest/             # caminho mínimo (Dijkstra)
+│   ├── ds/                   # estruturas auxiliares genéricas (fila, pilha)
+│   └── cli/                  # leitura de entrada dos menus
+└── docs/                     # enunciados e respostas, na mesma divisão de cmd/
+    ├── unidade1/
+    │   ├── lista01/
+    │   ├── lista02/
+    │   └── lista03/
+    └── unidade2/
+        ├── dijkstra/
+        ├── bellman_ford/
+        └── floyd_warshall/
 ```
 
 ## 📋 Atividades
 
+### Unidade I
+
 | Lista | Conteúdo | Respostas |
 |-------|----------|-----------|
-| `lista01` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/lista01/respostas.md](docs/lista01/respostas.md) |
-| `lista02` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/lista02/respostas.md](docs/lista02/respostas.md) |
-| `lista03` | BFS e DFS em grafos direcionados, ponderados e direcionados ponderados; Dijkstra | [docs/lista03/respostas.md](docs/lista03/respostas.md) |
+| `lista01` | Matriz e lista de adjacência, BFS, DFS recursiva e DFS com pilha | [docs/unidade1/lista01/respostas.md](docs/unidade1/lista01/respostas.md) |
+| `lista02` | Árvores, árvores geradoras por BFS/DFS e arborescência (Aula 9) | [docs/unidade1/lista02/respostas.md](docs/unidade1/lista02/respostas.md) |
+| `lista03` | BFS e DFS em grafos direcionados, ponderados e direcionados ponderados; Dijkstra | [docs/unidade1/lista03/respostas.md](docs/unidade1/lista03/respostas.md) |
+
+### Unidade II – Caminhos mínimos
+
+Avaliação da unidade: três estudos dirigidos, entrega pelo SIGAA até **01/12/2026, 23h59**.
+
+| Estudo dirigido | Conteúdo | Status |
+|-----------------|----------|--------|
+| `dijkstra` | Caminhos mínimos em grafos ponderados com pesos não negativos | a fazer |
+| `bellman_ford` | Caminhos mínimos com pesos negativos (e detecção de ciclo negativo) | a fazer |
+| `floyd_warshall` | Caminhos mínimos entre todos os pares de vértices | a fazer |
 
 ## 🚀 Como executar
 
@@ -59,13 +81,13 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 
 ```bash
 # rodar uma atividade
-go run ./cmd/lista01                    # grafo do enunciado
-go run ./cmd/lista01 -extra             # com a aresta (2,5) (Questão 10)
-go run ./cmd/lista01 -input             # grafo digitado pelo usuário (Questão 13)
-go run ./cmd/lista02
+go run ./cmd/unidade1/lista01           # grafo do enunciado
+go run ./cmd/unidade1/lista01 -extra    # com a aresta (2,5) (Questão 10)
+go run ./cmd/unidade1/lista01 -input    # grafo digitado pelo usuário (Questão 13)
+go run ./cmd/unidade1/lista02
 make run LISTA=lista02 ARGS="-start 3"
-go run ./cmd/lista03                    # origem A
-go run ./cmd/lista03 -start D           # outra origem (mostra inalcançáveis)
+go run ./cmd/unidade1/lista03           # origem A
+go run ./cmd/unidade1/lista03 -start D  # outra origem (mostra inalcançáveis)
 
 # compilar todas as listas em bin/
 make build
