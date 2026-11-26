@@ -33,7 +33,7 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 │   │   ├── matriz_lista_bfs_dfs/  # matriz, lista, BFS e DFS
 │   │   ├── arvores_geradoras/     # árvores, árvores geradoras e arborescência
 │   │   └── digrafo_ponderado/     # BFS/DFS em digrafo, ponderado e Dijkstra
-│   └── unidade2/             # estudos dirigidos de caminhos mínimos (a fazer)
+│   └── unidade2/             # estudos dirigidos de caminhos mínimos
 │       ├── dijkstra/
 │       ├── bellman_ford/
 │       └── floyd_warshall/
@@ -41,7 +41,8 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 │   ├── graph/                # interface Graph, matriz, lista, digrafo e lista ponderada
 │   ├── traversal/            # BFS, DFS recursiva e DFS com pilha
 │   ├── tree/                 # EhArvore, árvores geradoras BFS/DFS e arborescência
-│   ├── shortest/             # caminho mínimo (Dijkstra)
+│   ├── shortest/             # caminhos mínimos (Dijkstra, Bellman-Ford, Floyd-Warshall)
+│   ├── report/               # formatação da saída dos estudos de caminhos mínimos
 │   ├── ds/                   # estruturas auxiliares genéricas (fila, pilha)
 │   └── cli/                  # leitura de entrada dos menus
 └── docs/                     # enunciados e respostas, na mesma divisão de cmd/
@@ -69,11 +70,11 @@ Além de cumprir as listas, o projeto serve como estudo de **Go** e de boas prá
 
 Avaliação da unidade: três estudos dirigidos, entrega pelo SIGAA até **01/12/2026, 23h59**.
 
-| Estudo dirigido | Conteúdo | Status |
-|-----------------|----------|--------|
-| `dijkstra` | Caminhos mínimos em grafos ponderados com pesos não negativos | a fazer |
-| `bellman_ford` | Caminhos mínimos com pesos negativos (e detecção de ciclo negativo) | a fazer |
-| `floyd_warshall` | Caminhos mínimos entre todos os pares de vértices | a fazer |
+| Estudo dirigido | Conteúdo | Respostas |
+|-----------------|----------|-----------|
+| `dijkstra` | Caminhos mínimos em grafos ponderados com pesos não negativos; versão linear e com heap | [docs/unidade2/dijkstra/respostas.md](docs/unidade2/dijkstra/respostas.md) |
+| `bellman_ford` | Caminhos mínimos com pesos negativos e detecção de ciclo negativo alcançável | [docs/unidade2/bellman_ford/respostas.md](docs/unidade2/bellman_ford/respostas.md) |
+| `floyd_warshall` | Caminhos mínimos entre todos os pares de vértices | [docs/unidade2/floyd_warshall/respostas.md](docs/unidade2/floyd_warshall/respostas.md) |
 
 ## 🚀 Como executar
 
@@ -88,6 +89,9 @@ go run ./cmd/unidade1/arvores_geradoras
 make run LISTA=arvores_geradoras ARGS="-start 3"
 go run ./cmd/unidade1/digrafo_ponderado           # origem A
 go run ./cmd/unidade1/digrafo_ponderado -start D  # outra origem (mostra inalcançáveis)
+go run ./cmd/unidade2/dijkstra
+go run ./cmd/unidade2/bellman_ford               # -start C / -reverse para o desafio
+go run ./cmd/unidade2/floyd_warshall
 
 # compilar todas as listas em bin/
 make build
@@ -118,6 +122,7 @@ make run ARGS="-input"                              # com grafo digitado (Quest�
 make run LISTA=arvores_geradoras                    # árvores geradoras
 make run LISTA=arvores_geradoras ARGS="-start 3"    # com outra raiz
 make run LISTA=digrafo_ponderado                    # digrafo ponderado
+make run LISTA=bellman_ford ARGS="-reverse"          # Bellman-Ford com as arestas em ordem inversa
 ```
 
 ## 🛠️ Tecnologias
